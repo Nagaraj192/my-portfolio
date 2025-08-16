@@ -196,7 +196,9 @@ function Hero() {
   );
 }
 
-function SectionTitle({ icon: Icon, title, id }: { icon: any; title: string; id: string }) {
+import type { ComponentType } from "react";
+
+function SectionTitle({ icon: Icon, title, id }: { icon: ComponentType<{ className?: string }>; title: string; id: string }) {
   return (
     <div id={id} className="flex items-center gap-2 mb-6">
       <Icon className="h-5 w-5" />
@@ -204,6 +206,7 @@ function SectionTitle({ icon: Icon, title, id }: { icon: any; title: string; id:
     </div>
   );
 }
+
 
 function Projects() {
   return (

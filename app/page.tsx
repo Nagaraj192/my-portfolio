@@ -259,7 +259,8 @@ function About() {
       <Card className="rounded-2xl">
         <CardContent className="pt-6">
           <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-            I'm a full‑stack developer focused on building delightful UI and reliable backends.
+            I&apos;m a full-stack developer focused on building delightful UI and reliable backends.
+
             I enjoy working across the stack—React on the front, Node/Express on the back, and
             databases like PostgreSQL or MongoDB. I care about clean code, performance, and DX.
           </p>

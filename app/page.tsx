@@ -18,7 +18,7 @@ const PROFILE = {
   email: "nag.thaduri001@gmail.com",
   github: "https://github.com/Nagaraj192", // ← replace
   linkedin: "https://www.linkedin.com/in/nagarajuthaduri/", // ← replace
-  resumeUrl: "/Nagaraju_Thaduri_Resume.pdf", // 
+  resumeUrl: "/Nagaraju_resume.pdf", // 
 };
 
 const SKILLS = [

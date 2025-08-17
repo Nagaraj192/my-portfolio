@@ -6,6 +6,7 @@ import { Button } from "./components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import { Badge } from "./components/ui/badge";
 
+
 // -----------------------------
 // 🔧 Quick Edit Zone (fill these out!)
 // -----------------------------
@@ -14,10 +15,10 @@ const PROFILE = {
   title: "Full-Stack Developer",
   tagline:
     "I build clean, performant web apps with React, Node.js, and cloud-native tooling.",
-  location: "New Jersey,United States",
+  location: "New Jersey, United States",
   email: "nag.thaduri001@gmail.com",
-  github: "https://github.com/Nagaraj192", // ← replace
-  linkedin: "https://www.linkedin.com/in/nagarajuthaduri/", // ← replace
+  github: "https://github.com/Nagaraj192",
+  linkedin: "https://www.linkedin.com/in/nagarajuthaduri/",
   resumeUrl: "/Nagaraju_Thaduri_Resume.pdf", // 
 };
 
@@ -157,44 +158,86 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="max-w-6xl mx-auto px-6 pt-16 pb-10 md:pt-24 md:pb-16">
-      <motion.div {...fadeUp} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-        <div className="max-w-3xl">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
-            {PROFILE.title}
-          </h1>
-          <p className="mt-3 text-neutral-600 dark:text-neutral-300 text-base md:text-lg">
-            {PROFILE.tagline}
-          </p>
-          <div className="mt-5 flex items-center flex-wrap gap-3 text-sm text-neutral-600 dark:text-neutral-300">
-            <MapPin className="h-4 w-4" /> {PROFILE.location}
-            <span className="mx-2">•</span>
-            <Calendar className="h-4 w-4" /> Available for full-time roles
-          </div>
-          <div className="mt-6 flex items-center gap-3">
-            <Button asChild>
-              <a href="#projects" className="flex items-center gap-2">
-                View Projects <ArrowRight className="h-4 w-4" />
+    <section className="relative overflow-hidden">
+      {/* Background blobs / particles */}
+      <motion.div
+        aria-hidden
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2 }}
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute top-[-10%] left-[-10%] h-72 w-72 rounded-full blur-3xl bg-blue-400/30 dark:bg-blue-600/20" />
+        <div className="absolute bottom-[-10%] right-[-10%] h-96 w-96 rounded-full blur-3xl bg-purple-400/30 dark:bg-purple-600/20" />
+      </motion.div>
+
+      <div className="max-w-6xl mx-auto px-6 pt-16 pb-12 md:pt:24 md:pb-16">
+        <motion.div {...fadeUp} className="grid md:grid-cols-2 items-center gap-10">
+          {/* Left: Copy + CTAs */}
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 text-xs mb-4">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" /> Open to opportunities
+            </div>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+              {PROFILE.name}
+            </h1>
+            <p className="mt-2 text-lg md:text-xl text-neutral-600 dark:text-neutral-300">
+              {PROFILE.title}
+            </p>
+            <p className="mt-4 max-w-2xl text-neutral-700 dark:text-neutral-300">
+              {PROFILE.tagline}
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Button asChild>
+                <a href="#projects" className="flex items-center gap-2">
+                  View Projects <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+              <Button variant="secondary" asChild>
+                <a href={PROFILE.resumeUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2">
+                  <FileDown className="h-4 w-4" /> Download Resume
+                </a>
+              </Button>
+              <a href={PROFILE.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm underline-offset-4 hover:underline">
+                <Github className="h-4 w-4" /> GitHub
               </a>
-            </Button>
-            <Button variant="secondary" asChild>
-              <a href={`mailto:${PROFILE.email}`} className="flex items-center gap-2">
-                <Mail className="h-4 w-4" /> Get in touch
+              <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm underline-offset-4 hover:underline">
+                <Linkedin className="h-4 w-4" /> LinkedIn
               </a>
-            </Button>
+            </div>
+            <div className="mt-5 flex items-center flex-wrap gap-3 text-sm text-neutral-600 dark:text-neutral-300">
+              <MapPin className="h-4 w-4" /> {PROFILE.location}
+              <span className="mx-2">•</span>
+              <Calendar className="h-4 w-4" /> Available for full-time roles
+            </div>
           </div>
-        </div>
-        <div className="grid grid-cols-2 gap-3 w-full md:w-auto">
+
+          {/* Right: Photo card */}
+          <div className="relative mx-auto md:mx-0">
+            <div className="absolute inset-0 -z-10 rounded-[2rem] blur-2xl bg-gradient-to-tr from-blue-500/20 via-fuchsia-500/20 to-amber-400/20" />
+            <div className="rounded-[2rem] border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur p-4 shadow-xl">
+              <img
+                src="/nag_image.jpg"
+                alt={`${PROFILE.name} headshot`}
+                className="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[1.5rem]"
+              />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Quick skill chips */}
+        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
           {SKILLS.slice(0, 6).map((s) => (
             <Badge key={s} className="text-sm px-3 py-2 rounded-xl justify-center">
               {s}
             </Badge>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
+
 
 import type { ComponentType } from "react";
 
